@@ -1,12 +1,14 @@
+import Link from "next/link";
+
 export default async function Home() {
   return (
     <div className="main-container">
       <h1>Home Page</h1>
       <div>
-        <a href="/landing">Go to Landing Page</a>
+        <Link href="/landing">Go to Landing Page</Link>
       </div>
       <div>
-        <a href="/information">Go to Information Page</a>
+        <Link href="/information">Go to Information Page</Link>
       </div>
     </div>
   );
