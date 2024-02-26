@@ -1,9 +1,10 @@
 "use client"
+
 import React, { useState } from 'react';
-import Link from 'next/link'
 import { Slide } from '@chakra-ui/react';
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import './WelcomePage.css'; // Import CSS file for additional styling
+import { setSessionStatus } from '../utils/session';
 
 const WelcomePage: React.FC = () => {
   const [pageIndex, setPageIndex] = useState<number>(0);
@@ -13,28 +14,35 @@ const WelcomePage: React.FC = () => {
   const router = useRouter();
   const navigate = (name: string) => {
     router.push(name);
-  };// Move the useRouter hook inside the component
+  };
 
   const handleNextClick = () => {
     if (pageIndex === 0) {
-      const nameRegex = /^[a-zA-Z][a-zA-Z\s]*$/;
-      if (name.trim() === '' || !nameRegex.test(name)) {
-        alert('Please enter name');
+      if (!validateInput(name)) {
+        alert('Please enter a valid name');
       } else {
         setPageIndex(1);
       }
     } else {
-      if (city.trim() === '') {
-        alert('Please enter city name');
+      if (!validateInput(city)) {
+        alert('Please enter a valid city name');
       } else {
         // Handle next action, maybe submit the form or do something else
+        setSessionStatus(true);
+        navigate("/landingpage");
       }
     }
+  };
+
+  const validateInput = (input: string) => {
+    const regex = /^[a-zA-Z][a-zA-Z\s]*$/;
+    return input.trim() !== '' && regex.test(input);
   };
 
   const handlePrevClick = () => {
     setPageIndex(0);
   };
+
   return (
     <div className="container">
       <form id="msform">
@@ -56,9 +64,7 @@ const WelcomePage: React.FC = () => {
               <input type="text" name="city" placeholder="City" value={city} onChange={e => setCity(e.target.value)} />
               <br />
               <button type="button" className="previous action-button" onClick={handlePrevClick}>Previous</button>
-              <Link href="/landingpage">
-                <button type="button" className="next action-button"onClick={()=>navigate("/landingpage")}>Submit</button>
-              </Link>
+              <button type="button" className="next action-button" onClick={handleNextClick}>Submit</button>
             </fieldset>
           </center>
         </Slide>

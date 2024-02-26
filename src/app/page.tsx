@@ -1,6 +1,6 @@
 // pages/index.js
 import React from 'react';
-import WelcomePage from './component/name';
+import WelcomePage from './component/welcomePage';
 
 
 const HomePage = () => {
