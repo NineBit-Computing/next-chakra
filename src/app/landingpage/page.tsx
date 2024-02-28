@@ -2,17 +2,19 @@
 import {useRouter} from 'next/navigation'
 import React from 'react';
 import withAuth from '../withAuth';
-import Table from './Table';
+import TablePage from './TablePage';
+import { Box, Center, Heading } from '@chakra-ui/react';
 
 
 const LandingPage =() => {
     const router = useRouter();
   return (
-    <div>
-      <h1>Welcome to the Protected Page!</h1>
-      <Table/>
-      {/* Add your landing page content here */}
-    </div>
+    <Box mt={20}>
+      <Center>
+      <Heading size='lg' >Welcome! to the protected page. You can access your data here.</Heading>
+      </Center>
+      <TablePage/>
+    </Box>
   );
 };
 

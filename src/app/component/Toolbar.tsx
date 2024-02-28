@@ -22,9 +22,6 @@ function Toolbar() {
         Greetings!
         </Heading>
       </Flex>
-      <Box marginTop="60px"> {/* Adjust top margin to fit the height of your toolbar */}
-        {/* Your content here */}
-      </Box>
     </>
   );
 }

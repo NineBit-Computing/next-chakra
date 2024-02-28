@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Toolbar from "./component/Toolbar";
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +20,16 @@ export default function RootLayout({
     <html lang="en">
      
       <body className={inter.className}>
-        <ChakraProvider>
+        <ChakraProvider>        
         <Toolbar/>
-        <div>
+        <Box 
+        width="100%"
+        height="100%"
+        overflow="hidden"
+        background="linear-gradient(to top, #209cff 0%, #68e0cf 100%);"
+        >
         {children}
-        </div>
+        </Box>
         </ChakraProvider>
       </body>
     </html>

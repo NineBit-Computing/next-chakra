@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import { Slide } from '@chakra-ui/react';
+import { Box, Button, Center, Heading, Input, Slide } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation'
 import './WelcomePage.css'; // Import CSS file for additional styling
 import { setSessionStatus } from '../utils/session';
@@ -44,32 +44,36 @@ const WelcomePage: React.FC = () => {
   };
 
   return (
-    <div className="container">
+   <Box>
       <form id="msform">
         <Slide direction={pageIndex === 0 ? "left" : "right"} in={pageIndex === 0} style={{ zIndex: 2 }}>
-          <center>
+          <Center>
+           
             <fieldset style={{ padding: '40px', height: '40%' }}>
-              <h2 className="fs-title">Enter Your Name</h2>
-              <input type="text" name="name" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
+  
+              <Heading size="md" color="white">Enter Your Name</Heading>
+              <Input type="text" m={4} p={4} name="name" bg="black" color="white" placeholder="Name" _placeholder={{ color: 'inherit' }} maxWidth="300px" value={name} onChange={e => setName(e.target.value)} />
               <br />
-              <button type="button" className="next action-button" onClick={handleNextClick}>Next</button>
+              <Button type="button" m={4} p={4} onClick={handleNextClick}>Next</Button>
+                
             </fieldset>
-          </center>
+          
+          </Center>
         </Slide>
 
         <Slide direction={pageIndex === 0 ? "left" : "right"} in={pageIndex === 1} style={{ zIndex: 1 }}>
-          <center>
+          <Center>
             <fieldset style={{ padding: '40px', height: '40%' }}>
-              <h2 className="fs-title">Enter Your City Name</h2>
-              <input type="text" name="city" placeholder="City" value={city} onChange={e => setCity(e.target.value)} />
+            <Heading size="md" color="white">Enter Your City Name</Heading>
+              <Input type="text" m={4} p={4} name="city" placeholder="City" bg="black" color="white" _placeholder={{ color: 'inherit' }}  maxWidth="300px" value={city} onChange={e => setCity(e.target.value)} />
               <br />
-              <button type="button" className="previous action-button" onClick={handlePrevClick}>Previous</button>
-              <button type="button" className="next action-button" onClick={handleNextClick}>Submit</button>
+              <Button type="button" m={4} p={4} onClick={handlePrevClick}>Previous</Button>
+              <Button type="button"  p={4} onClick={handleNextClick}>Submit</Button>
             </fieldset>
-          </center>
+          </Center>
         </Slide>
       </form>
-    </div>
+  </Box>
   );
 };
 

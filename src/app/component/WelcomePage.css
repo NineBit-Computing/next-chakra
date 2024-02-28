@@ -19,10 +19,10 @@ body {
 	position: relative;
     height: auto;
 }#msform fieldset {
-    background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+    background: #3182ce;
     border: 0 none;
     border-radius: 3px;
-    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); */
     padding: 20px 30px;
     box-sizing: border-box;
     width: 30%;
@@ -37,35 +37,6 @@ body {
 /*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
 	display: none;
-}
-/*inputs*/
-#msform input, #msform textarea {
-	padding: 15px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	margin-bottom: 10px;
-	width: 250px;
-	box-sizing: border-box;
-	font-family: montserrat;
-	color: #2C3E50;
-	font-size: 13px;
-}
-/*buttons*/
-#msform .action-button {
-	width: 80px;
-	background: #1e90ff; /* Blue color for Next and Submit buttons */
-	font-weight: bold;
-	color: white;
-	border: 0 none;
-	border-radius: 1px;
-	cursor: pointer;
-	padding: 10px;
-	margin: 10px 5px;
-  text-decoration: none;
-  font-size: 14px;
-}
-#msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #1e90ff; /* Blue color for hover effect */
 }
 
 #msform .previous {

@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const createApolloClient = () => {
   return new ApolloClient({
-    uri: "https://graphqlzero.almansi.me/api",
+    uri: "https://countries.trevorblades.com/",
     cache: new InMemoryCache(),
   });
 };
