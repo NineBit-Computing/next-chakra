@@ -1,45 +1,28 @@
 import { gql } from "@apollo/client";
 import createApolloClient from "../../../apolloclient";
 import { Box, Heading, Table, Thead, Tbody, Tr, Th, Td, Center } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
 
-interface Country {
-  name: string;
-  capital: string;
-  currency: string;
-  awsRegion: string;
-}
-
-export default function TablePage() {
-  const [countries, setCountries] = useState<Country[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const client = createApolloClient();
-      const { data } = await client.query({
-        query: gql`
-          query Countries {
-            countries {
-              name
-              capital
-              currency
-              awsRegion
-            }
-          }
-        `,
-      });
-      setCountries(data.countries);
-    };
-
-    fetchData();
-  }, []);
+export default async function TablePage() {
+  const client = createApolloClient();
+  const { data } = await client.query({
+    query: gql`
+      query Countries {
+        countries {
+          name
+          capital
+          currency
+          awsRegion
+        }
+      }
+    `,
+  });
 
   return (
-    <Box className="information-page" overflow="hidden">
+    <Box className="information-page" overflow="hidden"> {/* Ensure overflow is set on the wrapping Box */}
       <Center>
         <Heading size="md" mt={5}>-- Country Details --</Heading>
       </Center>
-      <Box maxHeight="800px" overflowY="scroll">
+      <Box maxHeight="800px" overflowY="scroll"> {/* Apply maxHeight and overflowY to the wrapping Box */}
         <Table variant="simple" width="100%">
           <Thead>
             <Tr>
@@ -50,8 +33,8 @@ export default function TablePage() {
             </Tr>
           </Thead>
           <Tbody>
-            {countries.map((country, index) => (
-              <Tr key={index}>
+            {data.countries.map((country: any) => (
+              <Tr key={country.name}>
                 <Td>{country.name}</Td>
                 <Td>{country.capital}</Td>
                 <Td>{country.currency}</Td>
