@@ -1,14 +1,11 @@
-"use client"
 
-import {useRouter} from 'next/navigation'
 import React from 'react';
-import withAuth from '../withAuth';
 import TablePage from './TablePage';
 import { Box, Center, Heading } from '@chakra-ui/react';
 
 
 const LandingPage =() => {
-    const router = useRouter();
+  
   return (
     <Box mt={20}>
       <Center>
@@ -19,4 +16,4 @@ const LandingPage =() => {
   );
 };
 
-export default withAuth(LandingPage);
+export default LandingPage;
